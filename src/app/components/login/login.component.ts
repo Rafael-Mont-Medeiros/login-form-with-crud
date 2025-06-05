@@ -1,3 +1,4 @@
+import { error } from 'console';
 import { AuthService } from './../../core/services/auth/auth.service';
 import { UserService } from './../../core/services/user/user.service';
 import { Component, Inject, inject, OnInit } from '@angular/core';
@@ -62,6 +63,34 @@ export class LoginComponent implements OnInit {
       }
     })
   };
+
+  onSubmitRegister(): void {
+    if (this.registerForm.invalid) {
+      this.snackBar.open('invalid fields', 'close', {
+        duration: 3000,
+      })
+    }
+
+    const { name, email, password } = this.registerForm.value;
+
+    this.authService.register({
+      name: name!,
+      email: email!,
+      password: password!,
+    }).subscribe({
+      next: () => {
+        this.snackBar.open('user created successfully', 'close', {
+          duration: 3000,
+        })
+      },
+      error: (err) => {
+        this.snackBar.open( err.error?.message ||'error in registration', 'close', {
+          duration: 3000,
+        })
+      }
+    })
+
+  }
 
   ngOnInit(): void {
     if (this.authService.isAuthenticated()) {

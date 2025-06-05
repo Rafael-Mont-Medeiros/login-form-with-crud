@@ -2,10 +2,16 @@
   "users": [
     {
       "id": "1",
-      "name": "rafael",
+      "name": "Admin",
       "email": "admin@admin.com",
       "password": "admin",
       "done": false
+    },
+    {
+      "id": "2e51",
+      "name": "Rafael",
+      "email": "rafael@rafael.com",
+      "password": "rafael"
     }
   ],
   "tasks": []

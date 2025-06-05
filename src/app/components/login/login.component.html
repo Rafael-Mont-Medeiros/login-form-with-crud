@@ -33,7 +33,7 @@
 </form>
 
 <!-- REGISTER FORM -->
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
   <mat-card appearance="outlined" *ngIf="!toggleForm">
     <mat-card-title>Cadastre-se.</mat-card-title>
 

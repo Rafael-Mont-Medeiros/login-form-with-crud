@@ -1,2 +1,21 @@
-<h1>page dashboard</h1>
-<button (click)="onClose()">SAIR</button>
+<header *ngIf="currentUser">
+  <h1>Welcome {{ currentUser.name }}!</h1>
+  <div class="btns">
+    <button
+      style="font-size: 1.2rem"
+      mat-button
+      color="primary"
+      (click)="onNewTask()"
+    >
+      ciar tarefa
+    </button>
+    <button
+      style="font-size: 1.2rem"
+      mat-button
+      color="warn"
+      (click)="onClose()"
+    >
+      Logout
+    </button>
+  </div>
+</header>

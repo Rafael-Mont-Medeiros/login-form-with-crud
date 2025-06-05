@@ -1,0 +1,16 @@
+header{
+  background-color: #D7E3FF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+header h1 {
+  color: #005CBB;
+}
+
+.btns{
+  display: flex;
+  column-gap: 5rem;
+}
