@@ -1,4 +1,4 @@
-<form [formGroup]="todoForm">
+<form [formGroup]="todoForm" (ngSubmit)="addTask()">
   <section>
     <h1>Add Task.</h1>
 
@@ -13,8 +13,10 @@
     </mat-form-field>
 
     <div class="todo-btns">
-      <button color="primary" mat-raised-button type="submit"> adicionar tarefa</button>
-      <button mat-raised-button type="button" color="warn"> Cancelar</button>
+      <button color="primary" mat-raised-button type="submit">Add task.</button>
+      <button mat-raised-button type="button" color="warn"> Cancel</button>
     </div>
   </section>
 </form>
+
+

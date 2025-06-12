@@ -1,21 +1,14 @@
 <header *ngIf="currentUser">
-  <h1>Welcome {{ currentUser.name }}!</h1>
-  <div class="btns">
-    <button
-      style="font-size: 1.2rem"
-      mat-button
-      color="primary"
-      (click)="onNewTask()"
-    >
-      ciar tarefa
-    </button>
-    <button
-      style="font-size: 1.2rem"
-      mat-button
-      color="warn"
-      (click)="onClose()"
-    >
-      Logout
-    </button>
-  </div>
+  <mat-toolbar color="primary">
+    <h1>Welcome {{ currentUser.name }}!</h1>
+    <div class="btns">
+      <button class="logout"  mat-raised-button color="accent" (click)="onClose()" >
+        Logout
+      </button>
+    </div>
+  </mat-toolbar>
 </header>
+
+<div class="container">
+  <app-task></app-task>
+</div>

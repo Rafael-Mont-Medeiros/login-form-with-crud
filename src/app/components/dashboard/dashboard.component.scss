@@ -1,16 +1,24 @@
+
 header{
-  background-color: #D7E3FF;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  margin-bottom: 2rem;
 }
 
-header h1 {
-  color: #005CBB;
+header mat-toolbar{
+  display: inherit;
+  justify-content: space-between;
 }
 
 .btns{
   display: flex;
   column-gap: 5rem;
+}
+
+.logout {
+  transition: .5s;
+}
+
+.logout:hover {
+  scale: 1.1;
 }

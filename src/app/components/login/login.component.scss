@@ -5,17 +5,11 @@
   height: 100vh;
 }
 
-/* form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-} */
+
 
 mat-card {
+  width: 400px;
   row-gap: 1rem;
-  width: 45vw;
   padding: 2rem;
 }
 

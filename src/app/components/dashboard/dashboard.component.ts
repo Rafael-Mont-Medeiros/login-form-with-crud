@@ -4,15 +4,15 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from '../../material.module';
-import { MatDialog } from '@angular/material/dialog';
-import { TodoFormComponent } from '../todo-form/todo-form.component';
+import { TaskComponent } from '../task/task.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    TaskComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -21,22 +21,15 @@ export class DashboardComponent implements OnInit {
 
   private authService = inject(AuthService)
   private snakeBar = inject(MatSnackBar)
-  private matDialog = inject(MatDialog)
-  currentUser : Users| null = null
+  currentUser: Users | null = null
 
 
   ngOnInit(): void {
-    this.authService.currentUser$.subscribe(user =>{
+    this.authService.currentUser$.subscribe(user => {
       this.currentUser = user
     })
   }
 
-  onNewTask(){
-    this.matDialog.open(TodoFormComponent, {
-      width: '400px',
-      height: '400px'
-    })
-  }
 
   onClose(): void {
     this.authService.logout()

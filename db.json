@@ -14,5 +14,24 @@
       "password": "rafael"
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "id": "5b45",
+      "title": "whcc",
+      "description": "cerggrfewqfwde",
+      "completed": false
+    },
+    {
+      "id": "8823",
+      "title": "fewfewfe",
+      "description": "fewfefe",
+      "completed": false
+    },
+    {
+      "id": "0b5c",
+      "title": "fefefee",
+      "description": "efsadd",
+      "completed": false
+    }
+  ]
 }
