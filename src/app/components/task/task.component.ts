@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TodoFormComponent } from '../todo-form/todo-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MaterialModule } from '../../material.module';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-task',
@@ -21,37 +22,52 @@ import { MaterialModule } from '../../material.module';
 export class TaskComponent implements OnInit {
   private matDialog = inject(MatDialog)
 
-  tasks: Tasks[] = []
+  tasks: Tasks[] = [];
+  totalItems = 0;
+  pageSize = 5;
+  currentPage = 0;
 
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((data) => {
-      this.tasks = data;
+    this.loadTasks()
+  };
+
+  loadTasks() {
+    const apiPage = this.currentPage + 1
+    this.taskService.getTasks(apiPage, this.pageSize).subscribe(data => {
+      this.tasks = data.tasks;
+      this.totalItems = data.total;
     })
   };
 
+  onPageChange(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.currentPage = event.pageIndex;
+    this.loadTasks();
+  }
+
   onNewTask() {
-    const dialogRef =this.matDialog.open(TodoFormComponent, {
+    const dialogRef = this.matDialog.open(TodoFormComponent, {
       width: '400px',
       height: '400px'
     })
 
-    dialogRef.afterClosed().subscribe((createdTask: Tasks)=>{
-      if(createdTask){
-        this.tasks.push(createdTask)
+    dialogRef.afterClosed().subscribe((createdTask: Tasks) => {
+      if (createdTask) {
+        /* this.tasks.push(createdTask) */
+        this.loadTasks()
       }
     })
   };
 
-
-
-
-
-  deleteTask(tasks: Tasks){
-    this.taskService.deleteTask(tasks).subscribe(
-      ()=> this.tasks = this.tasks.filter (t => t.id !== tasks.id)
-    )
+  deleteTask(tasks: Tasks) {
+    this.taskService.deleteTask(tasks).subscribe(() => {
+      this.loadTasks();
+    });
+    /* ()=> this.tasks = this.tasks.filter (t => t.id !== tasks.id) */
   }
 };
+
+

@@ -48,30 +48,18 @@
             </mat-menu>
           </div>
         </mat-card-header>
-
-        <!-- <mat-card-actions align="end">
-          <button mat-button color="primary">
-            <mat-icon>edit</mat-icon>
-            Editar
-          </button>
-
-          <button mat-button>
-            <mat-icon>done</mat-icon>
-            concluido.
-          </button>
-
-          <button mat-button color="warn">
-            <mat-icon>delete</mat-icon>
-            Deletar
-          </button>
-
-        </mat-card-actions> -->
       </mat-card>
     </div>
 
     <div>
-      <h2 *ngIf="tasks.length === 0" >Nenhuma tarefa encontrada</h2>
-      <p>Clique em "<strong>Nova Tarefa</strong>"  para começar a organizar suas atividades!</p>
+      <h2 *ngIf="tasks.length === 0">Nenhuma tarefa encontrada</h2>
+      <p>Clique em "<strong>Nova Tarefa</strong>" para começar a organizar suas atividades!</p>
     </div>
   </div>
+  <mat-paginator
+    [length]="totalItems"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[3,5,10,20]"
+    (page)="onPageChange($event)">
+  </mat-paginator>
 </div>

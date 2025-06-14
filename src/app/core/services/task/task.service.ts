@@ -1,8 +1,9 @@
 import { Tasks } from './../../interfaces/tasks';
 import { Inject, inject, Injectable } from '@angular/core';
 import { enviroment } from '../../../enviroments/enviroment';
-import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { map, Observable, Subject } from 'rxjs';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,19 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  getTasks(): Observable<Tasks[]> {
-    return this.http.get<Tasks[]>(`${this.API_URL}/tasks`)
+  getTasks(page: number, limit: number): Observable<{ tasks: Tasks[], total: number }> {
+    const params = new HttpParams()
+      .set('_page', page.toString())
+      .set('_limit', limit.toString());
+
+    /* return this.http.get<Tasks[]>(`${this.API_URL}/tasks`) */
+
+    return this.http.get<Tasks[]>(`${this.API_URL}/tasks`, { params, observe: 'response' }).pipe(
+      map((response: HttpResponse<Tasks[]>) => {
+        const total = Number(response.headers.get('X-Total-Count'));
+        return { tasks: response.body || [], total };
+      })
+    );
   };
 
   createTask(task: Tasks): Observable<Tasks> {
