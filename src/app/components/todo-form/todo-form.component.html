@@ -1,20 +1,20 @@
 <form [formGroup]="todoForm" (ngSubmit)="addTask()">
   <section>
-    <h1>Add Task.</h1>
+    <h1>Adicionar tarefa.</h1>
 
     <mat-form-field appearance="outline">
-      <mat-label>Name to task</mat-label>
+      <mat-label>Titulo para tarefa.</mat-label>
       <input matInput formControlName="title">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>description your task</mat-label>
+      <mat-label>Desrição da sua tarefa.</mat-label>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
 
     <div class="todo-btns">
-      <button color="primary" mat-raised-button type="submit">Add task.</button>
-      <button mat-raised-button type="button" color="warn"> Cancel</button>
+      <button color="primary" mat-raised-button type="submit">Adicionar tarefa.</button>
+      <button (click)="closeDialog()" mat-raised-button type="button" color="warn"> Cancelar</button>
     </div>
   </section>
 </form>

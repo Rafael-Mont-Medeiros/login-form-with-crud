@@ -14,54 +14,5 @@
       "password": "rafael"
     }
   ],
-  "tasks": [
-    {
-      "id": "0b5c",
-      "title": "fefefee",
-      "description": "efsadd",
-      "completed": false
-    },
-    {
-      "id": "6ceb",
-      "title": "Rafael",
-      "description": "rafael",
-      "completed": false
-    },
-    {
-      "id": "7d4c",
-      "title": "rafael",
-      "description": "rafaeeel\n",
-      "completed": false
-    },
-    {
-      "id": "831d",
-      "title": "ffffffff",
-      "description": "ffffffffffffffff",
-      "completed": false
-    },
-    {
-      "id": "2d06",
-      "title": "fffffffffffff",
-      "description": "aaaaaaaaaaaaaaaa",
-      "completed": false
-    },
-    {
-      "id": "5dca",
-      "title": "SsSQDFEWD",
-      "description": "asSADFASFFS",
-      "completed": false
-    },
-    {
-      "id": "c48b",
-      "title": "eythhtrerg",
-      "description": "ewfewffefe",
-      "completed": false
-    },
-    {
-      "id": "2dcc",
-      "title": "ytryjytrjryt",
-      "description": "yjtytjytjytjytjytj",
-      "completed": false
-    }
-  ]
+  "tasks": []
 }

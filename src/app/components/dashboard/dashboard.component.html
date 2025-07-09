@@ -1,9 +1,11 @@
 <header *ngIf="currentUser">
   <mat-toolbar color="primary">
-    <h1>Welcome {{ currentUser.name }}!</h1>
+    <div class="title">
+      <h1>Welcome</h1> <h1 class="user_efect">{{ currentUser.name }}.</h1>
+    </div>
     <div class="btns">
       <button class="logout"  mat-raised-button color="accent" (click)="onClose()" >
-        Logout
+        Sair
       </button>
     </div>
   </mat-toolbar>

@@ -23,7 +23,7 @@ import { TaskService } from '../../core/services/task/task.service';
 export class TodoFormComponent {
 
   private taskService = inject(TaskService);
-  private matDiaogRef = inject(MatDialogRef);
+  private matDialogRef = inject(MatDialogRef);
   private snackBar = inject(MatSnackBar);
 
 
@@ -41,7 +41,7 @@ export class TodoFormComponent {
 
       this.taskService.createTask(newTask).subscribe({
         next: (createdTask) => {
-          this.matDiaogRef.close(createdTask);
+          this.matDialogRef.close(createdTask);
         },
         error: (err) => {
           console.error('Erro ao criar tarefa', err)
@@ -53,5 +53,9 @@ export class TodoFormComponent {
       })
     }
   };
+
+  closeDialog(){
+    this.matDialogRef.close();
+  }
 
 }
