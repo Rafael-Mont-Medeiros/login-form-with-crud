@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Editar Tarefa</h1>
+<mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Novo titulo</mat-label>
+    <input matInput  [(ngModel)]="data.task.title" placeholder="Título">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nova descrição</mat-label>
+    <textarea matInput [(ngModel)]="data.task.description" placeholder="Descrição"></textarea>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button color="accent" mat-raised-button (click)="onCancel()">Cancelar</button>
+  <button color="primary" mat-raised-button (click)="onSave()" cdkFocusInitial>Salvar</button>
+</mat-dialog-actions>

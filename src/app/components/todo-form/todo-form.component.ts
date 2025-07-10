@@ -43,6 +43,11 @@ export class TodoFormComponent {
         next: (createdTask) => {
           this.matDialogRef.close(createdTask);
         },
+        complete: () => {
+          this.snackBar.open('Tarefa criada com sucesso', 'fechar', {
+            duration: 3000,
+          })
+        },
         error: (err) => {
           console.error('Erro ao criar tarefa', err)
         }

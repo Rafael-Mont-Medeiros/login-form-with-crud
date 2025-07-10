@@ -7,6 +7,7 @@ import { TodoFormComponent } from '../todo-form/todo-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MaterialModule } from '../../material.module';
 import { PageEvent } from '@angular/material/paginator';
+import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 
 @Component({
   selector: 'app-task',
@@ -68,6 +69,22 @@ export class TaskComponent implements OnInit {
     });
     /* ()=> this.tasks = this.tasks.filter (t => t.id !== tasks.id) */
   }
+
+  editTask(task:Tasks): void {
+    const dialogRef = this.matDialog.open(EditTaskDialogComponent, {
+      width: '400px',
+      height: '400px',
+      data: { task: {...task} } // Pass a copy of the task
+    });
+
+    dialogRef.afterClosed().subscribe(result =>{
+      if(result){
+        this.taskService.updateTask(result).subscribe(() => {
+          this.loadTasks();
+        }
+      );
+      }
+    })
 };
 
-
+}
